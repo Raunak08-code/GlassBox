@@ -1,0 +1,6 @@
+{
+    "interval": 5,
+    "cpu_threshold": 80,
+    "log_file": "logs/system.log",
+    "csv_file": "logs/metrics.csv"
+}
