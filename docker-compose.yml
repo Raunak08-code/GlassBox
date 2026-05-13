@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  glassbox-agent:
+    image: raunak08/glassbox-agent:v1.0
+    container_name: glassbox-agent
+    environment:
+      DB_HOST: postgres 
+    ports:
+      - "8000:8000"
+    depends_on:
+        - postgres
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+    
+  postgres:
+    image: postgres:15
+    container_name: glassbox-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: observability_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+  prometheus:
+    image: prom/prometheus
+    container_name: glassbox-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    
+  grafana:
+    image: grafana/grafana
+    container_name: glassbox-grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+volumes:
+  postgres_data:

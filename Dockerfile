@@ -2,10 +2,13 @@ FROM python:3.10
 
 WORKDIR /app
 
+ENV PYTHONPATH=/app
+
+
 COPY requirements.txt . 
 
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python","src/cli.py","start"]
+CMD ["python", "-m", "src.cli", "start"]

@@ -1,23 +1,23 @@
 import argparse
 
-from monitor import start_monitoring
+from monitoring.monitor_engine import MonitorEngine
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="System-Monitoring-CLI-Tool"
-    )
+    parser = argparse.ArgumentParser()
+
     parser.add_argument(
         "command",
-        help = "start | status"
+        help = "start"
     )
 
     args = parser.parse_args()
+
     if args.command == "start":
-        start_monitoring()
-    elif args.command == "status":
-        print("System Monitoring Tool is Ready")
+        engine = MonitorEngine()
+        engine.start()
+
     else:
         print("Involid command")
 
 if __name__ == "__main__":
-    main()
+    main() 

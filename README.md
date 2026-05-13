@@ -1,98 +1,200 @@
-# 🚀 System Monitoring CLI Tool
+# 🚀 GlassBox
 
-A lightweight Python-based system monitoring tool that tracks CPU and memory usage in real time using a command-line interface.
+> Real-time observability and monitoring platform built with Python, Prometheus, Grafana, Docker and PostgreSQL. 
 
-This project demonstrates practical concepts of:
-- System monitoring
-- File handling
-- Logging architecture
-- Docker containerization
-- CLI tool development
-- Runtime error handling
-- Config-driven applications
+GlassBox is a containerized observability platform designed to monitor system health, processes, Docker containers, and infrastructure telemetry in real time. It combines live terminal monitoring with Prometheus metrics scraping and Grafana visualization to create a complete monitoring pipeline.
 
 ---
 
 # 📌 Features
 
-✅ Real-time CPU monitoring  
-✅ Memory usage tracking  
-✅ CSV metric logging  
-✅ TXT event logging  
-✅ JSON configuration support  
-✅ Graceful shutdown handling  
-✅ Docker support  
-✅ CLI-based execution  
-✅ Threshold-based warning system  
+## ✅ System Monitoring
+- CPU usage monitoring
+- Memory usage monitoring
+- Disk usage monitoring
+- Network statistics tracking
+
+## ✅ Process Monitoring
+- Live top process tracking
+- CPU usage per process
+- Memory usage per process
+- Process status monitoring
+
+## ✅ Docker Monitoring
+- Running container tracking
+- Container CPU usage
+- Container memory usage
+- Docker integration using Docker SDK
+
+## ✅ Live Dashboard
+- Real-time terminal dashboard using Rich
+- Dynamic metrics updates
+- Process visualization
+- Container monitoring display
+
+## ✅ Observability Stack
+- Prometheus exporter integration
+- Prometheus scraping pipeline
+- Grafana dashboards and visualization
+- Time-series monitoring
+
+## ✅ Database Integration
+- PostgreSQL metrics storage
+- Persistent monitoring data
+- Historical metric collection
+
+## ✅ Alert System
+- CPU threshold alerts
+- Memory threshold alerts
+- Disk usage alerts
+- Logging-based warnings
+
+## ✅ Centralized Logging
+- Structured logging system
+- Monitoring lifecycle logs
+- Warning and error tracking
+
+## ✅ Containerized Deployment
+- Dockerized application stack
+- Multi-container architecture
+- Docker Compose orchestration  
+
+---
+
+# 🏗️ Architecture
+
+```text
++-------------------+
+|   GlassBox Agent  |
+|-------------------|
+| System Metrics    |
+| Process Metrics   |
+| Docker Metrics    |
++---------+---------+
+          |
+          v
++-------------------+
+| Prometheus Export |
++---------+---------+
+          |
+          v
++-------------------+
+|    Prometheus     |
+| Time-Series Store |
++---------+---------+
+          |
+          v
++-------------------+
+|      Grafana      |
+| Visualization UI  |
++-------------------+
+```
 
 ---
 
 # 🛠️ Tech Stack
 
-- Python 3.10
-- psutil
-- argparse
-- csv
-- json
-- Docker
+| Technology     | Purpose                       |
+| -------------- | ----------------------------- |
+| Python         | Core monitoring engine        |
+| psutil         | System and process metrics    |
+| Rich           | Live terminal dashboard       |
+| Docker SDK     | Container monitoring          |
+| Prometheus     | Metrics scraping              |
+| Grafana        | Dashboard visualization       |
+| PostgreSQL     | Persistent metrics storage    |
+| Docker Compose | Multi-container orchestration |
+
 
 ---
 
 # 📂 Project Structure
 
 ```plaintext
-System-Monitoring-CLI-Tool/
+GlassBox/
 │
-├── config/
-│   └── config.json
+├── alert/
+│   ├── __init__.py
+│   └── alert_manager.py
+│
+├── dashboard/
+│   ├── __init__.py
+│   └── live_dashboard.py
+│
+├── database/
+│   ├── __init__.py
+│   └── db_manager.py
+│
+├── docker_monitoring/
+│   ├── __init__.py
+│   ├── container_metrics.py
+│   └── docker_monitor.py
+│
+├── exporters/
+│   ├── __init__.py
+│   └── prometheus_exporter.py
 │
 ├── logs/
+│   ├── __init__.py
+│   ├── logging_manager.py
+│   ├── metrics.csv
+│   └── system.logs
+│
+├── metrics/
+│   ├── __init__.py
+│   ├── process_metrics.py
+│   └── system_metrics.py
+│
+├── monitoring/
+│   ├── __init__.py
+│   └── monitor_engine.py
+│
+├── prometheus/
+│   └── prometheus.yml
 │
 ├── src/
-│   ├── cli.py
-│   ├── monitor.py
-│   ├── logger.py
-│   ├── metrics.py
-│   └── config_loader.py
+│   ├── __init__.py
+│   └── cli.py
 │
+├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
-├── README.md
-└── LICENSE
+└── README.md
 ```
+---
+
+# 🐳 Multi-Container Stack
+
+GlassBox runs as a containerized observability stack:
+
+| Container	           | Purpose                     |
+| -------------------  | -------------------------   |
+| glassbox-agent	   | Monitoring engine           |
+| glassbox-prometheus  | Metrics scraping            |
+| glassbox-grafana	   | Visualization dashboards    |
+| glassbox-postgres	   | Persistent storage          |
 
 ---
 
-# ⚙️ Configuration
+# ▶️ Installation & Setup
 
-Example `config.json`:
-
-```json
-{
-    "interval": 5,
-    "cpu_threshold": 80,
-    "log_file": "logs/system.log",
-    "csv_file": "logs/metrics.csv"
-}
-```
-
----
-
-# ▶️ Installation
-
-Clone repository:
+### Clone repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/System-Monitoring-CLI-Tool.git
+git clone https://github.com/Raunak08-code/GlassBox.git
+
+cd GlassBox
 ```
 
-Move into project folder:
+### Move into project folder:
 
 ```bash
-cd System-Monitoring-CLI-Tool
+python -m venv venv
+
+source venv/bin/activate
 ```
 
-Install dependencies:
+### Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -100,73 +202,133 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Run Project
+### ▶️ Run GlassBox Locally
 
 ```bash
-python src/cli.py start
+python -m src.cli start
 ```
 
 ---
 
-# 🐳 Docker Usage
+# 🐳 Run Using Docker Compose
 
-Build Docker image:
+Start Full Stack:
 
 ```bash
-docker build -t system-monitor .
+docker compose up --build
 ```
-
-Run container:
+Run in Background:
 
 ```bash
-docker run system-monitor
+docker compose up --build -d
+```
+
+Stop Stack:
+
+```bash
+docker compose down
 ```
 
 ---
 
-# 📊 Example Output
+# 📊 Access Services
 
-```plaintext
-CPU: 32% | MEMORY: 51%
-CPU: 44% | MEMORY: 53%
-WARNING: CPU usage crossed 80%
-```
-
----
-
-# 📝 Example Logs
-
-```plaintext
-[2026-05-09 11:20:01] Monitoring Started Successfully
-[2026-05-09 11:20:08] WARNING: CPU usage crossed 80%
-[2026-05-09 11:20:15] Monitoring Stopped
-```
+| Services          | URL                            |
+| ----------------- | ------------------------------ |
+| Prometheus        | http://localhost:9090          |
+| Grafana           | http://localhost:3000          |
+| Metrics Exporter  | http://localhost:8000/metrics  |
 
 ---
 
-# 🧠 Key Engineering Concepts Learned
+# 📈 Grafana Setup
 
-- File handling in Python
-- Runtime logging systems
-- Exception handling
-- Graceful shutdown handling
-- Docker containerization
-- Monitoring architecture
-- CLI application development
-- Config-based system design
+Default Credentials 
+```bash
+username: admin
+passward: admin
+```
+Add Prometheus Data Source
+use:
+```bash
+http://prometheus:9090
+```
+# 📡 Prometheus Metrics
+
+GlassBox exports metrics such as:
+```bash
+system_cpu_usage
+system_memory_usage
+system_disk_usage
+```
+These metrics are scraped by Prometheus and visualized in Grafana.
+
+---
+
+# 📸 Screenshots 
+
+Terminal Dashboard
+> Add screeshort here
+
+Grafana Dashboard
+> Add screensort here
+
+Prometheus Target
+> Add screensort here
+
+---
+
+# 🧠 Engineering Concepts Learned
+
+GlassBox demonstrates practical understanding of:
+- Observability pipelines
+- Metrics collection
+- Prometheus exporters
+- Time-series monitoring
+- Grafana dashboards
+- Docker networking
+- Multi-container orchestration
+- Runtime debugging
+- Infrastructure monitoring
+- Process telemetry
+- Service dependency management
+- Structured logging
 
 ---
 
 # 🚀 Future Improvements
 
-- Disk monitoring
-- Network monitoring
-- Docker container monitoring
-- Live terminal dashboard
-- Email alerts
-- Multi-threaded monitoring
-- Linux daemon support
-- Prometheus integration
+- Alert notification (slack/Discard/Email)
+- Historical analytics dashboard
+- Kubernetes monitoring
+- Anomaly detection
+- Service health APIs
+- Distributed tracing integration
+- Log aggregation pipline
+
+---
+
+# 🧪 Example Commands
+
+View Running Containers
+```bash
+docker ps
+```
+
+View Container Logs
+```bash
+docker logs glassbox-agent
+```
+
+Check Prometheus Targets
+```bash
+http://localhost:9090/targets
+```
+---
+
+# 📌 Version
+
+Current Release:    v1.0
 
 ---
 
@@ -179,5 +341,7 @@ This project is licensed under the MIT License.
 # 👨‍💻 Author
 
 Raunak Pandey
-
 B.Tech CSE (AI)
+
+# ⭐ GlassBox
+A lightweight yet powerful observability platform for real-time infrastructure monitoring, telemetry collection, and system visualization.

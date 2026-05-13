@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "glassbox-agent"
+    static_configs:
+      - targets:
+          - "glassbox-agent:8000"
+

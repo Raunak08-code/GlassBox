@@ -2,8 +2,6 @@ ____pycache__/
 
 *.pyc
 
-logs/
-
 venv/
 
 .git/
