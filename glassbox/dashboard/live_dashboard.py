@@ -1,8 +1,8 @@
 from rich.console import Group
 from rich.table import Table
-from metrics.process_metrics import ProcessMetrics
-from metrics.system_metrics import SystemMetrics
-from docker_monitoring.container_metrics import ContainerMetrics
+from glassbox.metrics.process_metrics import ProcessMetrics
+from glassbox.metrics.system_metrics import SystemMetrics
+from glassbox.docker_monitoring.container_metrics import ContainerMetrics
 
 class Dashboard:
     def __init__(self):

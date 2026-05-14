@@ -8,53 +8,53 @@ GlassBox is a containerized observability platform designed to monitor system he
 
 # 📌 Features
 
-## ✅ System Monitoring
+✅ System Monitoring
 - CPU usage monitoring
 - Memory usage monitoring
 - Disk usage monitoring
 - Network statistics tracking
 
-## ✅ Process Monitoring
+✅ Process Monitoring
 - Live top process tracking
 - CPU usage per process
 - Memory usage per process
 - Process status monitoring
 
-## ✅ Docker Monitoring
+ ✅ Docker Monitoring
 - Running container tracking
 - Container CPU usage
 - Container memory usage
 - Docker integration using Docker SDK
 
-## ✅ Live Dashboard
+✅ Live Dashboard
 - Real-time terminal dashboard using Rich
 - Dynamic metrics updates
 - Process visualization
 - Container monitoring display
 
-## ✅ Observability Stack
+✅ Observability Stack
 - Prometheus exporter integration
 - Prometheus scraping pipeline
 - Grafana dashboards and visualization
 - Time-series monitoring
 
-## ✅ Database Integration
+✅ Database Integration
 - PostgreSQL metrics storage
 - Persistent monitoring data
 - Historical metric collection
 
-## ✅ Alert System
+✅ Alert System
 - CPU threshold alerts
 - Memory threshold alerts
 - Disk usage alerts
 - Logging-based warnings
 
-## ✅ Centralized Logging
+✅ Centralized Logging
 - Structured logging system
 - Monitoring lifecycle logs
 - Warning and error tracking
 
-## ✅ Containerized Deployment
+✅ Containerized Deployment
 - Dockerized application stack
 - Multi-container architecture
 - Docker Compose orchestration  
@@ -178,7 +178,7 @@ GlassBox runs as a containerized observability stack:
 
 # ▶️ Installation & Setup
 
-### Clone repository:
+Clone repository:
 
 ```bash
 git clone https://github.com/Raunak08-code/GlassBox.git
@@ -186,7 +186,7 @@ git clone https://github.com/Raunak08-code/GlassBox.git
 cd GlassBox
 ```
 
-### Move into project folder:
+Move into project folder:
 
 ```bash
 python -m venv venv
@@ -194,23 +194,19 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-### Install dependencies:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
-
----
-
-### ▶️ Run GlassBox Locally
+ 
+▶️ Run GlassBox Locally
 
 ```bash
-python -m src.cli start
+python cli.py start
 ```
 
----
-
-# 🐳 Run Using Docker Compose
+🐳 Run Using Docker Compose
 
 Start Full Stack:
 
@@ -241,7 +237,7 @@ docker compose down
 
 ---
 
-# 📈 Grafana Setup
+### 📈 Grafana Setup
 
 Default Credentials 
 ```bash
@@ -253,7 +249,7 @@ use:
 ```bash
 http://prometheus:9090
 ```
-# 📡 Prometheus Metrics
+### 📡 Prometheus Metrics
 
 GlassBox exports metrics such as:
 ```bash

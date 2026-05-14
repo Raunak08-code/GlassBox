@@ -1,10 +1,10 @@
 import time
-from logs.logging_manager import LoggingManager
-from alert.alert_manager import AlertManager
-from metrics.system_metrics import SystemMetrics
-from dashboard.live_dashboard import Dashboard
-from exporters.prometheus_exporter import PrometheusExporter
-from database.db_manager import DatabaseManager
+from glassbox.logs.logging_manager import LoggingManager
+from glassbox.alert.alert_manager import AlertManager
+from glassbox.metrics.system_metrics import SystemMetrics
+from glassbox.dashboard.live_dashboard import Dashboard
+from glassbox.exporters.prometheus_exporter import PrometheusExporter
+from glassbox.database.db_manager import DatabaseManager
 from rich.live import Live
 
 class MonitorEngine:

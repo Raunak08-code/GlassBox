@@ -1,6 +1,6 @@
 import argparse
 
-from monitoring.monitor_engine import MonitorEngine
+from glassbox.monitoring.monitor_engine import MonitorEngine
 
 def main():
     parser = argparse.ArgumentParser()
