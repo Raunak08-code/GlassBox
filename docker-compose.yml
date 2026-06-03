@@ -31,14 +31,18 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./glassbox/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     
   grafana:
     image: grafana/grafana
     container_name: glassbox-grafana
     ports:
       - "3000:3000"
+
+    volumes:
+      - grafana-storage:/var/lib/grafana
     depends_on:
       - prometheus
 volumes:
   postgres_data:
+  grafana-storage:

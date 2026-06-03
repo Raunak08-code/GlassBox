@@ -203,7 +203,7 @@ pip install -r requirements.txt
 ▶️ Run GlassBox Locally
 
 ```bash
-python cli.py start
+python run.py start
 ```
 
 🐳 Run Using Docker Compose
