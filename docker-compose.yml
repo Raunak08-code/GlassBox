@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   glassbox-agent:
+    build: .
     image: raunak08/glassbox-agent:v1.0
     container_name: glassbox-agent
     environment:

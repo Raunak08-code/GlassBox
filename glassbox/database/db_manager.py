@@ -12,8 +12,10 @@ class DatabaseManager:
                         #     "DB_HOST",
                         #     "localhost"
                         # ),
-                        port=5432,
+
                         host = "localhost",
+                        port=5432,
+                        
                         database = 'observability_platform',
                         user = 'postgres',
                         password = "postgres"

@@ -22,6 +22,9 @@ class PrometheusExporter:
 
     @staticmethod
     def update(cpu,memory,disk):
+        print("PROMETHEUS UPDATE CALLED")
+        print(cpu, memory, disk)
+        
         cpu_metric.set(cpu)
         memory_metric.set(memory)
         disk_metric.set(disk)

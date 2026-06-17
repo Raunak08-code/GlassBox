@@ -44,13 +44,16 @@ class MonitorEngine:
                             network)
                     )
         
-                # pprometheus monitoring data
+                    # prometheus monitoring data
+                    self.logger.info(
+                         f"Prometheus Update: CPU={cpu}, MEM={memory}, DISK={disk}"
+                    )
                     PrometheusExporter.update( cpu,memory,disk)
                 
-                # database intregation...
+                    # database intregation...
                     self.db.insert_system_metrics(cpu,memory,disk,network)
 
-                # alert system intregretates...
+                    # alert system intregretates...
                     cpu_alert = AlertManager.cpu_alert(cpu)
                     if cpu_alert:
                         self.logger.warning(cpu_alert)
