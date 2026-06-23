@@ -8,12 +8,12 @@ class DatabaseManager:
             while True:
                 try:
                     self.connection = psycopg2.connect(
-                        # host = os.getenv(
-                        #     "DB_HOST",
-                        #     "localhost"
-                        # ),
+                        host = os.getenv(
+                            "DB_HOST",
+                            "localhost"
+                        ),
 
-                        host = "localhost",
+                        # host = "localhost",
                         port=5432,
                         
                         database = 'observability_platform',
@@ -24,9 +24,12 @@ class DatabaseManager:
                     print("Connected to postgres")
                     break
                 except psycopg2.OperationalError as e:
-                    print(f"Connection Error: {e}")
-                    print("postgresSQL not ready... retrying in 5 seconds")
-                    time.sleep(5)
+                    try:
+                        print(f"Connection Error: {e}")
+                        print("postgresSQL not ready... retrying in 5 seconds")
+                        time.sleep(5)
+                    except KeyboardInterrupt:
+                        print("\nstopped due to keyboard interrupt...")
         except KeyboardInterrupt:
             print("\nstopped due to keyboard interrupt...")
     

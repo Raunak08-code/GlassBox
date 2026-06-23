@@ -261,16 +261,85 @@ These metrics are scraped by Prometheus and visualized in Grafana.
 
 ---
 
-# 📸 Screenshots 
+# 📸 Screenshots
 
-Terminal Dashboard
-> Add screeshort here
+## Architecture
 
-Grafana Dashboard
-> Add screensort here
+Project Architecture..
 
-Prometheus Target
-> Add screensort here
+![Architecture](assets/Architecture.png)
+
+---
+
+## Terminal Dashboard
+
+Real-time monitoring dashboard built using Rich.
+
+![Terminal Dashboard](assets/terminal_dashboard.png)
+
+---
+
+## Grafana Dashboard
+
+Unified observability dashboard powered by Prometheus and Grafana.
+
+![Grafana Dashboard](assets/grafana_dashboard.png)
+
+---
+
+## CPU Monitoring Panel
+
+![CPU Panel](assets/grafana_CPU_penel.png)
+
+---
+
+## Memory Monitoring Panel
+
+![Memory Panel](assets/grafana_memory_penel.png)
+
+---
+
+## Prometheus Target Status
+
+Prometheus successfully scraping GlassBox metrics exporter.
+
+![Prometheus Target](assets/prometheus_target.png)
+
+---
+
+## Prometheus CPU Query
+
+Metric verification using PromQL.
+
+![Prometheus CPU Query](assets/promethus_CPU_query.png)
+
+---
+
+## Prometheus Memory Query
+
+![Prometheus Memory Query](assets/promethus_Memory_query.png)
+
+---
+
+## Prometheus Disk Query
+
+![Prometheus Disk Query](assets/prometheus_disk_query.png)
+
+---
+
+## PostgreSQL Metrics Storage
+
+Historical metrics persisted inside PostgreSQL.
+
+![PostgreSQL Table](assets/postgres_table.png)
+
+---
+
+## Running Containers
+
+Complete observability stack running with Docker Compose.
+
+![Docker Containers](assets/docker_ps.png)
 
 ---
 
