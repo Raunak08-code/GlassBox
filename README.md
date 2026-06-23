@@ -8,56 +8,38 @@ GlassBox is a containerized observability platform designed to monitor system he
 
 # 📌 Features
 
-✅ System Monitoring
-- CPU usage monitoring
-- Memory usage monitoring
-- Disk usage monitoring
-- Network statistics tracking
+### ✅ System Monitoring
 
-✅ Process Monitoring
-- Live top process tracking
-- CPU usage per process
-- Memory usage per process
-- Process status monitoring
+> Continuously collects and tracks system-level metrics including CPU, memory, disk usage, and network statistics to provide real-time infrastructure visibility.
 
- ✅ Docker Monitoring
-- Running container tracking
-- Container CPU usage
-- Container memory usage
-- Docker integration using Docker SDK
+### ✅ Process Monitoring
 
-✅ Live Dashboard
-- Real-time terminal dashboard using Rich
-- Dynamic metrics updates
-- Process visualization
-- Container monitoring display
+>Monitors active processes and resource consumption, helping identify high CPU or memory-consuming applications on the host system.
 
-✅ Observability Stack
-- Prometheus exporter integration
-- Prometheus scraping pipeline
-- Grafana dashboards and visualization
-- Time-series monitoring
+### ✅ Docker Monitoring
 
-✅ Database Integration
-- PostgreSQL metrics storage
-- Persistent monitoring data
-- Historical metric collection
+>Integrates with the Docker Engine to track running containers and monitor container-level resource utilization.
 
-✅ Alert System
-- CPU threshold alerts
-- Memory threshold alerts
-- Disk usage alerts
-- Logging-based warnings
+### ✅ Live Terminal Dashboard
 
-✅ Centralized Logging
-- Structured logging system
-- Monitoring lifecycle logs
-- Warning and error tracking
+>Provides a real-time terminal-based dashboard built with Rich, offering an interactive view of system health, processes, and container activity.
 
-✅ Containerized Deployment
-- Dockerized application stack
-- Multi-container architecture
-- Docker Compose orchestration  
+### ✅ Observability Stack
+
+>Exports metrics through Prometheus and enables real-time visualization and analysis using Grafana dashboards.
+
+### ✅ Historical Metrics Storage
+
+>Stores monitoring data in PostgreSQL for persistence, enabling historical analysis and future reporting capabilities.
+
+### ✅ Alerting & Logging
+
+>Generates threshold-based alerts and maintains structured logs for monitoring events, warnings, and operational insights.
+
+### ✅ Containerized Architecture
+
+>Runs as a multi-container application orchestrated with Docker Compose, simplifying deployment and service management.
+
 
 ---
 
@@ -65,28 +47,32 @@ GlassBox is a containerized observability platform designed to monitor system he
 
 ```text
 +-------------------+
-|   GlassBox Agent  |
-|-------------------|
-| System Metrics    |
-| Process Metrics   |
-| Docker Metrics    |
+| Linux Server /    |
+|       System      |
 +---------+---------+
           |
           v
 +-------------------+
-| Prometheus Export |
+| Python Monitoring |
+|  Agent (psutil)   |
++---------+---------+
+          |Expose Metrics
+          v
++-------------------+
+|      Prometheus   |    
+|(Metrics Collector)|
++---------+---------+
+          | Query Metrics
+          v
++-------------------+
+|    Grafana        |
+|  (Visualization)  |
 +---------+---------+
           |
           v
 +-------------------+
-|    Prometheus     |
-| Time-Series Store |
-+---------+---------+
-          |
-          v
-+-------------------+
-|      Grafana      |
-| Visualization UI  |
+|   PostgreSQL      |
+|Historical Storage |
 +-------------------+
 ```
 
@@ -99,7 +85,7 @@ GlassBox is a containerized observability platform designed to monitor system he
 | Python         | Core monitoring engine        |
 | psutil         | System and process metrics    |
 | Rich           | Live terminal dashboard       |
-| Docker SDK     | Container monitoring          |
+| Docker         | Container monitoring          |
 | Prometheus     | Metrics scraping              |
 | Grafana        | Dashboard visualization       |
 | PostgreSQL     | Persistent metrics storage    |
@@ -108,58 +94,36 @@ GlassBox is a containerized observability platform designed to monitor system he
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```plaintext
 GlassBox/
 │
-├── alert/
-│   ├── __init__.py
-│   └── alert_manager.py
+├── assets/                     # README screenshots and project visuals
 │
-├── dashboard/
-│   ├── __init__.py
-│   └── live_dashboard.py
+├── glassbox/
+│   ├── alert/                  # Alert management and threshold checks
+│   ├── dashboard/              # Rich terminal dashboard components
+│   ├── database/               # PostgreSQL integration
+│   ├── docker_monitoring/      # Docker container monitoring
+│   ├── exporters/              # Prometheus metrics exporter
+│   ├── logs/                   # Logging utilities
+│   ├── metrics/                # System and process metrics collection
+│   ├── monitoring/             # Monitoring engine and orchestration
+│   └── prometheus/             # Prometheus configuration
 │
-├── database/
-│   ├── __init__.py
-│   └── db_manager.py
+├── logs/                       # Generated monitoring logs
 │
-├── docker_monitoring/
-│   ├── __init__.py
-│   ├── container_metrics.py
-│   └── docker_monitor.py
+├── venv/                       # Python virtual environment (local)
 │
-├── exporters/
-│   ├── __init__.py
-│   └── prometheus_exporter.py
-│
-├── logs/
-│   ├── __init__.py
-│   ├── logging_manager.py
-│   ├── metrics.csv
-│   └── system.logs
-│
-├── metrics/
-│   ├── __init__.py
-│   ├── process_metrics.py
-│   └── system_metrics.py
-│
-├── monitoring/
-│   ├── __init__.py
-│   └── monitor_engine.py
-│
-├── prometheus/
-│   └── prometheus.yml
-│
-├── src/
-│   ├── __init__.py
-│   └── cli.py
-│
-├── docker-compose.yml
-├── Dockerfile
+├── .dockerignore
+├── .gitignore
+├── docker-compose.yml          # Multi-container stack definition
+├── Dockerfile                  # GlassBox container image
+├── LICENSE
+├── README.md
 ├── requirements.txt
-└── README.md
+└── run.py                      # Application entry point
 ```
 ---
 
