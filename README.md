@@ -112,8 +112,6 @@ GlassBox/
 │   ├── monitoring/             # Monitoring engine and orchestration
 │   └── prometheus/             # Prometheus configuration
 │
-├── logs/                       # Generated monitoring logs
-│
 ├── venv/                       # Python virtual environment (local)
 │
 ├── .dockerignore
